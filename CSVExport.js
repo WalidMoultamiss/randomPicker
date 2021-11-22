@@ -20,7 +20,6 @@ Compress with: http://jscompress.com/
             BREAK = '\r\n',
             DELIMITER = ';',
 			      FILENAME = `${filename+'.csv' }`;
-
         // Get and Write the headers
         csvHeaders = Object.keys(csvData[0]);
         csvOutput += csvHeaders.join(';') + BREAK;
