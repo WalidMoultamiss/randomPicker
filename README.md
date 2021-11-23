@@ -9,7 +9,7 @@ yarn
 yarn dev
 ```
 
-## Open another termina to run json server
+## Open another terminal to run json server
 ```
 yarn server
 ```
