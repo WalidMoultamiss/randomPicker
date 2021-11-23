@@ -24,16 +24,15 @@ const render = async (elements) => {
     random = arr[Math.floor(Math.random() * arr.length)];
     let randomElement = elements.find(element => element.id === random);
     randomElement.style = "transform: scale(1.3)";
-    scrollToElement();
     await elements.map((e) => {
         if(e.status === "notChoosed"){
             var newSpin = document.createElement("div");
-            // newSpin.classList.add("scale-50");
+            newSpin.classList.add("scale-50");
             newSpin.classList.add("w-48");
             newSpin.classList.add("nodeChildrenSpinner");
-            newSpin.id = e.id;
+            
             newSpin.innerHTML = `
-            <div class="flex rounded-lg px-4 h-48  scale-50 text-base flex-col  shadow-sm p-3 ${(e.id == random) ? 'bg-red-600 text-white h-52 -mt-2' : 'bg-white'} ${(e.status != 'notChoosed') ?'bg-gray-200':''}"  >
+            <div class="flex w-48 rounded-lg px-4 h-48 scale-50 text-base flex-col shadow-sm p-3 ${(e.id == random) ? 'bg-red-600 text-white h-52 -mt-2' : 'bg-white'} ${(e.status != 'notChoosed') ?'bg-gray-200':''}" id="id_${e.id}" >
             <h3 class="text-2xl font-semibold items-baseline whitespace-nowrap">${e.fullName}</h3>
             <p>${e.brief}</p>
             ${(e.status != 'notChoosed') ? ('<hr class="border-white"/><p class="text-black mt-2">'+e.date+'</p>') : ''}
@@ -43,21 +42,22 @@ const render = async (elements) => {
             document.getElementById('spinnerWinnerId').value = randomElement.id
             spinner.appendChild(newSpin);
         }
-    }
-    
-    );
+    });
+    scrollToElement(randomElement.id);
 };
 
 
 
 //scroll to
-const scrollToElement = () => {
-    console.log(random);
-    let elemt = document.getElementById(random);
+const scrollToElement = (id) => {
+    let childrenPos = document.getElementById('id_'+id).offsetLeft;
+    let parentPos = document.getElementById("spinner").offsetLeft;
+
     spinner.scrollTo({
-        left: elemt.offsetLeft,
-        behavior: "smooth"
-    });
+        left: childrenPos - parentPos - 150,
+        behavior: 'smooth'
+    })
+
 };
 
 
@@ -91,7 +91,6 @@ var elements = fetchElements();
 //add event listener to randomize button
 const randomizeButton = document.querySelector("#btnSpinner");
 randomizeButton.addEventListener("click", fetchElements);
-randomizeButton.addEventListener("click", scrollToElement);
 
 
 fetchElements();
