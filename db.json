@@ -46,8 +46,8 @@
       "id": "21637587494313",
       "fullName": "Jane Doe",
       "brief": "titre de sujet",
-      "status": "notChoosed",
-      "date": ""
+      "status": "choosed",
+      "date": "11/30/2021"
     },
     {
       "id": "11637587494480",

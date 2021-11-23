@@ -5,6 +5,19 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datePickerInput").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends
+            });
+        });
+    </script>
   <title>Vite App</title>
 </head>
 <style>
@@ -79,7 +92,7 @@
             id="spinnerWinner"> please spin it</h3>
         </div>
         <div class="flex transition-none">
-          <input id="datePickerInput" datepicker type="text" class="bg-gray-50 transition-none border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Select date">
+          <input type="text" id="datePickerInput" />
           <button
           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           type="button" id="ChooseBtn">
